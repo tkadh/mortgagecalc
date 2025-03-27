@@ -31,13 +31,15 @@ public class java {
     public static double readNumber(String prompt, double min, double max) {
         Scanner scanner = new Scanner(System.in);
         double value;
+        NumberFormat formatter = NumberFormat.getInstance();
+
         while (true) {
             System.out.print(prompt);
             value = scanner.nextDouble();
             if (value >= min && value <= max) {
                 break;
             } else {
-                System.out.println("Enter a value between " + min + " and " + max);
+                System.out.println("Enter a value between " + formatter.format((int)min) + " and " + formatter.format((int)max));
             }
             }
             return value;
