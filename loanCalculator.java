@@ -2,7 +2,7 @@
 import java.text.NumberFormat;
 import java.util.*;
 
-public class java {
+public class loanCalculator {
 
     public static void main(String[] args) {
 
@@ -26,6 +26,8 @@ public class java {
         String monthlyPayment = formatter.format(payment);
 
         System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years.");
+
+        scanner.close();
     }
 
     public static double readNumber(String prompt, double min, double max) {
