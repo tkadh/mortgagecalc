@@ -8,8 +8,8 @@ public class loanCalculator {
         Scanner scanner = new Scanner(System.in);
 
         // Read user inputs
-        int principal = (int)readNumber("Enter your principal loan: ", 1000, 1000000);
-        int deposit = (int) readNumber("Enter your deposit amount: ", 0, principal);
+        int principal = (int) readNumber("Enter your principal loan: ", 1000, 1000000);
+        int deposit =  (int) readNumber("Enter your deposit amount: ", 0, principal);
         float annualInterestRate = (float) readNumber("Enter the annual interest rate for your loan: ", 0, 100);
         int years = (int) readNumber("Enter the term of your loan (years): ", 1, 30);
 
