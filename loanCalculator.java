@@ -5,33 +5,31 @@ import java.util.*;
 public class loanCalculator {
 
     public static void main(String[] args) {
-
-        
-        int principal = 0;
-        int deposit = 0;
-        double annualInterestRate = 0;
-        int years = 0;
-        double payment = 0;
-        
         Scanner scanner = new Scanner(System.in);
 
-        principal = (int)readNumber("Enter your principal loan: ", 1000, 1000000);
-        deposit = (int) readNumber("Enter your deposit amount: ", 0, principal);
-        annualInterestRate = (float) readNumber("Enter the annual interest rate for your loan: ", 0, 100);
-        years = (int) readNumber("Enter the term of your loan (years): ", 0, 30);
+        // Read user inputs
+        int principal = (int)readNumber("Enter your principal loan: ", 1000, 1000000);
+        int deposit = (int) readNumber("Enter your deposit amount: ", 0, principal);
+        float annualInterestRate = (float) readNumber("Enter the annual interest rate for your loan: ", 0, 100);
+        int years = (int) readNumber("Enter the term of your loan (years): ", 1, 30);
 
-        payment = calculateMortgage(principal, deposit, annualInterestRate, years);
+        // Calculate the monthly payment
+        double payment = calculateMortgage(principal, deposit, annualInterestRate, years);
 
+        // Format the payment as currency
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String monthlyPayment = formatter.format(payment);
 
         System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years.");
-
+        
         scanner.close();
+    
     }
 
+    // Method to read user input within specified range
     public static double readNumber(String prompt, double min, double max) {
         Scanner scanner = new Scanner(System.in);
+
         double value;
         NumberFormat formatter = NumberFormat.getInstance();
 
@@ -44,9 +42,11 @@ public class loanCalculator {
                 System.out.println("Enter a value between " + formatter.format((int)min) + " and " + formatter.format((int)max));
             }
             }
+            scanner.close();
             return value;
     }
 
+    // Method to calculate the monthly payment
     public static double calculateMortgage(
         int principal,
         int deposit,
