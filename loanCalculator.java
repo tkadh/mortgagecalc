@@ -5,7 +5,6 @@ import java.util.*;
 public class loanCalculator {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         // Read user inputs
         int principal = (int) readNumber("Enter your principal loan: ", 1000, 1000000);
@@ -20,10 +19,7 @@ public class loanCalculator {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String monthlyPayment = formatter.format(payment);
 
-        System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years.");
-        
-        scanner.close();
-    
+        System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years.");    
     }
 
     // Method to read user input within specified range
