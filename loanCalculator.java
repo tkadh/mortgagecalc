@@ -17,8 +17,15 @@ public class LoanCalculator {
             // Format the payment as currency
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             String monthlyPayment = formatter.format(payment);
-    
-            System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years.");    
+            System.out.println();
+            System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years."); 
+            
+            System.out.println();
+            System.out.println("Payment Schedule:");
+            for (short month = 1; month <= years * mInYear; month++) {
+                double balance = calculateBalance(principal, deposit, annualInterestRate, years, month);
+                System.out.println("Month " + month + ": " + formatter.format(balance));
+            }
         }
     
         // Method to read user input within specified range
