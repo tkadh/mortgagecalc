@@ -2,19 +2,18 @@
 import java.text.NumberFormat;
 import java.util.*;
 
-public class loanCalculator {
+public class LoanCalculator {
 
+    final int mInYear = 12;
+    final int percent = 100;
     public static void main(String[] args) {
-
         // Read user inputs
         int principal = (int) readNumber("Enter your principal loan: ", 1000, 1000000);
         int deposit = (int) readNumber("Enter your deposit amount: ", 0, principal);
         float annualInterestRate = (float) readNumber("Enter the annual interest rate for your loan: ", 0, 100);
         int years = (int) readNumber("Enter the term of your loan (years): ", 1, 30);
-
         // Calculate the monthly payment
         double payment = calculateMortgage(principal, deposit, annualInterestRate, years);
-
         // Format the payment as currency
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String monthlyPayment = formatter.format(payment);
@@ -48,8 +47,6 @@ public class loanCalculator {
         int deposit,
         double annualInterestRate,
         int years) {
-            final int mInYear = 12;
-            final int percent = 100;
             double monthlyInterestRate = annualInterestRate / percent / mInYear;
             int months = years * mInYear;
             double mathPow = Math.pow(1 + monthlyInterestRate, months);
@@ -57,5 +54,19 @@ public class loanCalculator {
 
             return payment;
     }
-
 }
+
+    public static double calculateBalance(int principal,
+    int deposit,
+    double annualInterestRate,
+    int years,
+    short numberOfPaymentsMade) {
+            double monthlyInterestRate = annualInterestRate / percent / mInYear;
+            int months = years * mInYear;
+
+            double balance = (principal - deposit) * (Math.pow(1 + monthlyInterestRate, months) - Math.pow(1 + monthlyInterestRate, numberOfPaymentsMade)) 
+            / (Math.pow(1 + monthlyInterestRate, months) - 1);
+
+            return balance;
+            
+    }
