@@ -17,6 +17,13 @@ public class LoanCalculator {
             // Format the payment as currency
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             String monthlyPayment = formatter.format(payment);
+
+            if (payment >= 1000) {
+                return;
+            } else {
+                System.out.println("You don't need a loan!!! Pay in full!");
+            }
+
             System.out.println();
             System.out.println("Your monthly payment will be: " + monthlyPayment + " over a term of " + years + " years."); 
             
@@ -25,8 +32,9 @@ public class LoanCalculator {
             for (short month = 1; month <= years * mInYear; month++) {
                 double balance = calculateBalance(principal, deposit, annualInterestRate, years, month);
                 System.out.println("Month " + month + ": " + formatter.format(balance));
-            }
+            
         }
+    }
     
         // Method to read user input within specified range
         public static double readNumber(String prompt, double min, double max) {
@@ -44,7 +52,7 @@ public class LoanCalculator {
                     System.out.println("Enter a value between " + formatter.format((int)min) + " and " + formatter.format((int)max));
                 }
                 }
-                
+                scanner.close();
                 return value;
         }
     
