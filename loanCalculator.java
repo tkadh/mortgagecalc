@@ -10,6 +10,7 @@ public class LoanCalculator {
             // Read user inputs
             int principal = (int) readNumber("Enter your principal loan: ", 1000, 1000000);
             int deposit = (int) readNumber("Enter your deposit amount: ", 0, principal);
+            int totalPrincipal = principal - deposit;
             float annualInterestRate = (float) readNumber("Enter the annual interest rate for your loan: ", 0, 100);
             int years = (int) readNumber("Enter the term of your loan (years): ", 1, 30);
             // Calculate the monthly payment
@@ -18,8 +19,8 @@ public class LoanCalculator {
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             String monthlyPayment = formatter.format(payment);
 
-            if (payment >= 1000) {
-                return;
+            if (totalPrincipal >= 1000) {
+                System.out.println();
             } else {
                 System.out.println("You don't need a loan!!! Pay in full!");
             }
@@ -52,7 +53,7 @@ public class LoanCalculator {
                     System.out.println("Enter a value between " + formatter.format((int)min) + " and " + formatter.format((int)max));
                 }
                 }
-                scanner.close();
+
                 return value;
         }
     
